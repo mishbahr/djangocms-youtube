@@ -124,6 +124,13 @@ Make sure you have installed the Google Analytics tracking scripts.
 See https://developers.google.com/analytics/devguides/collection/analyticsjs/
 
 
+
+Todo
+----
+
+* Video Sitemap (work in progress).
+
+
 You may also like...
 --------------------
 

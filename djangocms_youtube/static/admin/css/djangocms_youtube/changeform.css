@@ -1,0 +1,24 @@
+.change-form fieldset.advanced h2 {
+    border-bottom: none;
+    color: #888;
+}
+
+.field-video_url input[type=text],
+.field-title input[type=text] {
+    width: 480px;
+}
+
+.field-video_url input.invalid {
+    background-color: #FFEFEF;
+    border: 1px solid #CC2222;
+}
+
+.field-video_url p.help.error {
+    color: #b94a48;
+    font-weight: bold;
+}
+
+.field-video_url p.help.success {
+    font-weight: bold;
+    color: #468847;
+}

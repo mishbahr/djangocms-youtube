@@ -1,0 +1,48 @@
+{% load thumbnail staticfiles sekizai_tags cms_tags %}
+<div class="video-wrapper js-video-wrapper" itemprop="video" itemscope itemtype="http://schema.org/VideoObject" data-video-id="{{ instance.video.get_id }}" data-video-title="{{ instance.title }}">
+    <meta itemprop="name" content="{{ instance.get_title }}" />
+    <meta itemprop="duration" content="{{ instance.video.get_duration }}" />
+    <meta itemprop="thumbnailUrl" content="{{ instance.get_thumbnail }}" />
+    <meta itemprop="embedURL" content="{{ instance.video.get_embed_url }}" />
+    <meta itemprop="uploadDate" content="{{ instance.video.get_published_at }}" />
+    <meta itemprop="height" content="{{ instance.height }}" />
+    <meta itemprop="width" content="{{ instance.width }}" />
+    <meta itemprop="description" content="{{ instance.get_description }}" />
+
+    <div class="poster js-video-trigger js-video-poster" style="background-image: url({{ instance.highest_resolution_thumbnail.url }});">
+        <div class="playbutton -{{ instance.theme }}">
+            <svg focusable="false" width="21" height="20" viewBox="0 0 21 20" xmlns="http://www.w3.org/2000/svg" class="icon-playbutton">
+                <path class="fill-color" d="M10.5 0C4.977 0 .5 4.477.5 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm-2 14V6l6 4-6 4z" fill="#ffffff" fill-rule="evenodd" opacity=".55"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="video js-video-target"></div>
+    <div class="endscreen js-video-endscreen{% if instance.child_plugin_instances %} js-has-content{% endif %}">
+        <span class="endscreen-close">
+            <button class="endscreen-close-button js-endscreen-close"></button>
+        </span>
+        <div class="endscreen-content">
+            {% for plugin in instance.child_plugin_instances %}
+                {% render_plugin plugin %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% if instance.description_option == 'below' %}
+<div class="video-description">
+    {{ instance.description }}
+</div>
+{% endif %}
+
+{% addtoblock 'css' %}
+<link rel="stylesheet" href="{% static 'css/djangocms_youtube/djangocms_youtube.css' %}">
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+<script src="{% static 'js/djangocms_youtube/greensock-js/TweenMax.js' %}"></script>
+<script src="{% static 'js/djangocms_youtube/jquery.yt-player.js' %}"></script>
+<script type="text/javascript">
+    $(function() {
+        $('.js-video-wrapper').youTubePlayer({hl: '{{ LANGUAGE_CODE|default:"en" }}'});
+    });
+</script>
+{% endaddtoblock %}

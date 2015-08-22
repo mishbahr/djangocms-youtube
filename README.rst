@@ -50,23 +50,65 @@ You can register an app via https://developers.google.com/youtube/registering_an
 
 Features
 --------
+Reduce Page Load Time
+=====================
+
+When you embed any YouTube video on your website using standard IFRAME tags, you’ll be surprised to know how much extra weight that YouTube video will add to your page. The resources (CSS, images and JavaScript) will download even if the visitor on your website has chosen not to watch the embedded YouTube video.
 
 
-High resolution thumbnail
-=========================
+.. image:: http://mishbahr.github.io/assets/djangocms-youtube/thumbnail/djangocms-youtube-004.png
+  :target: http://mishbahr.github.io/assets/djangocms-youtube/djangocms-youtube-004.png
+  :width: 768px
+  :align: center
 
-Fetches the highest resolution thumbnail available from YouTube for a given video with options for custom video thumbnails using ``django-filer``.
+djangocms-youtube uses a clever workaround to reduce the time it takes to initially load the YouTube video player. Instead of embedding the full Youtube video player, it displays just the thumbnail images of the video and a “play” icon is placed over the video so that it looks like a video player.
 
 .. image:: http://mishbahr.github.io/assets/djangocms-youtube/thumbnail/djangocms-youtube-001.png
   :target: http://mishbahr.github.io/assets/djangocms-youtube/djangocms-youtube-001.png
   :width: 768px
   :align: center
 
+When the user hits the play button, the video thumbnail is replaced with the standard YouTube video player. The extra resources are thus loaded only when the user has decided to play the embedded video and not otherwise.
 
-**Note:** On desktop, the Image Overlay becomes a play button. Clicking the image starts the video. Mobile devices require two taps to play the video. Tap the image once to remove it and display the video player. Then, tap the play button to begin the video.
+Note: Mobile devices require two taps to play the video. Tap the image once to remove it and display the video player. Then, tap the play button to begin the video.*
+
+High Resolution Thumbnail
+=========================
+
+Fetches the highest resolution thumbnail available from YouTube for a given video with options for custom video thumbnails using ``django-filer``.
+
+.. code-block::
+
+    {
+      "default": {
+        "url": "https://i.ytimg.com/vi/9bZkp7q19f0/default.jpg",
+        "width": 120,
+        "height": 90
+      },
+      "high": {
+        "url": "https://i.ytimg.com/vi/9bZkp7q19f0/hqdefault.jpg",
+        "width": 480,
+        "height": 360
+      },
+      "medium": {
+        "url": "https://i.ytimg.com/vi/9bZkp7q19f0/mqdefault.jpg",
+        "width": 320,
+        "height": 180
+      },
+      "maxres": {
+        "url": "https://i.ytimg.com/vi/9bZkp7q19f0/maxresdefault.jpg",
+        "width": 1280,
+        "height": 720
+      },
+      "standard": {
+        "url": "https://i.ytimg.com/vi/9bZkp7q19f0/sddefault.jpg",
+        "width": 640,
+        "height": 480
+      }
+    }
 
 
-Schema.org integration
+Schema.org Integration
 ======================
 
 Full support for schema.org ``videoObject`` markup.

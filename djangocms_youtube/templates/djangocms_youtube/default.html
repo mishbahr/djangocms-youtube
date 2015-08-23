@@ -5,8 +5,8 @@
     <meta itemprop="thumbnailUrl" content="{{ instance.get_thumbnail }}" />
     <meta itemprop="embedURL" content="{{ instance.video.get_embed_url }}" />
     <meta itemprop="uploadDate" content="{{ instance.video.get_published_at }}" />
-    <meta itemprop="height" content="{{ instance.height }}" />
-    <meta itemprop="width" content="{{ instance.width }}" />
+    <meta itemprop="height" content="{{ instance.highest_resolution_thumbnail.height }}" />
+    <meta itemprop="width" content="{{ instance.highest_resolution_thumbnail.width }}" />
     <meta itemprop="description" content="{{ instance.get_description }}" />
 
     <div class="poster js-video-trigger js-video-poster" style="background-image: url({{ instance.highest_resolution_thumbnail.url }});">

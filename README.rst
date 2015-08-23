@@ -70,7 +70,7 @@ djangocms-youtube uses a clever workaround to reduce the time it takes to initia
 
 When the user hits the play button, the video thumbnail is replaced with the standard YouTube video player. The extra resources are thus loaded only when the user has decided to play the embedded video and not otherwise.
 
-Note: Mobile devices require two taps to play the video. Tap the image once to remove it and display the video player. Then, tap the play button to begin the video.*
+Note: Mobile devices require two taps to play the video. Tap the image once to remove it and display the video player. Then, tap the play button to begin the video.
 
 High Resolution Thumbnail
 =========================
@@ -137,9 +137,7 @@ Video Endscreen
   :width: 768px
   :align: center
 
-Plugin can have child plugins (i.e  other plugins placed inside this plugin), rendered as an overlay, when the video finishes.
-
-You can disable this functionality by overriding ``DJANGOCMS_YOUTUBE_ALLOW_CHILDREN`` in your ``settings.py`` file
+Plugin can have child plugins (i.e  other plugins placed inside this plugin), rendered as an overlay, when the video finishes. You can disable this functionality by overriding ``DJANGOCMS_YOUTUBE_ALLOW_CHILDREN`` in your ``settings.py`` file
 
 Google Analytics
 ================

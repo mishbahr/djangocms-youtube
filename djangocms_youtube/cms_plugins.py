@@ -37,7 +37,7 @@ class YoutubePlugin(CMSPluginBase):
     child_classes = settings.DJANGOCMS_YOUTUBE_CHILD_CLASSES
 
     def get_fieldsets(self, request, obj=None):
-        if settings.DJANGOCMS_FORMS_FIELDSETS:
+        if settings.DJANGOCMS_YOUTUBE_FIELDSETS:
             return settings.DJANGOCMS_YOUTUBE_FIELDSETS
 
         advanced_option_fields = ('theme', )

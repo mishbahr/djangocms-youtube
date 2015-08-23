@@ -1,0 +1,6 @@
+{
+    "package-name": "djangocms-youtube",
+    "installed-apps": [
+        "djangocms_youtube"
+    ]
+}

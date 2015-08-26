@@ -12,6 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 from filer.fields.image import FilerImageField
+from isodate import parse_duration
 from jsonfield import JSONField
 
 from .conf import settings
@@ -162,6 +163,10 @@ class Video(object):
 
     def get_duration(self):
         return self.contentDetails.get('duration')
+
+    def get_duration_seconds(self):
+        duration = parse_duration(self.get_duration())
+        return duration.total_seconds()
 
     def get_published_at(self):
         return self.snippet.get('publishedAt')

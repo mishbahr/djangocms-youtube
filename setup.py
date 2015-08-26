@@ -38,6 +38,7 @@ setup(
         'django-appconf',
         'django-cms>=3.0',
         'django-filer>=0.9',
+        'isodate>=0.5.4',
         'jsonfield',
         'requests',
     ],

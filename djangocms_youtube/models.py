@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 from filer.fields.image import FilerImageField
-from isodate import parse_duration
+from isodate import parse_duration, parse_datetime
 from jsonfield import JSONField
 
 from .conf import settings
@@ -170,6 +170,9 @@ class Video(object):
 
     def get_published_at(self):
         return self.snippet.get('publishedAt')
+
+    def get_published_date(self):
+        return parse_datetime(self.get_published_at())
 
     def get_tags(self):
         return self.snippet.get('tags', [])

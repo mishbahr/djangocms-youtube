@@ -171,7 +171,7 @@ class Video(object):
     def get_published_at(self):
         return self.snippet.get('publishedAt')
 
-    def get_published_date(self):
+    def get_published_datetime(self):
         return parse_datetime(self.get_published_at())
 
     def get_tags(self):

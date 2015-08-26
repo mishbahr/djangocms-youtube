@@ -171,5 +171,8 @@ class Video(object):
     def get_published_at(self):
         return self.snippet.get('publishedAt')
 
+    def get_tags(self):
+        return self.snippet.get('tags', [])
+
     def __str__(self):
         return 'Video: %s' % self.id

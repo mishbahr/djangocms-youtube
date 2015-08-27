@@ -8,3 +8,7 @@ class YoutubeAPIError(Exception):
 
     def __str__(self):
         return '(%s) %s - %s' % (self.status_code, self.error_type, self.error_message)
+
+
+class YoutubeAPI404(Exception):
+    pass

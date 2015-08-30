@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+{% spaceless %}
+{% for url in urlset %}
+  <url>
+    <loc>{{ url.location }}</loc>
+    {% for video in url.videos %}
+        <video:video>
+            <video:thumbnail_loc>{{ video.get_thumbnail }}</video:thumbnail_loc>
+            <video:title>{{ video.get_title }}</video:title>
+            <video:description>{{ video.get_description }}</video:description>
+            <video:player_loc allow_embed="yes" autoplay="autoplay=1">{{ video.get_embed_url }}</video:player_loc>
+            <video:duration>{{ video.get_duration}}</video:duration>
+            <video:publication_date>{{ video.get_publication_date }}</video:publication_date>
+            {% for tag in video.get_tags %}
+                <video:tag>{{ tag }}</video:tag>
+            {% endfor %}
+        </video:video>
+    {% endfor %}
+   </url>
+{% endfor %}
+{% endspaceless %}
+</urlset>

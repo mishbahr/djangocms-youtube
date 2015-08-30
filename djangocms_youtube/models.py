@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 from filer.fields.image import FilerImageField
-from isodate import parse_duration, parse_datetime
+from isodate import parse_datetime, parse_duration
 from jsonfield import JSONField
 
 from .conf import settings

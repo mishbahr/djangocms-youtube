@@ -116,8 +116,7 @@ class Youtube(CMSPlugin):
         return self.video.get_title()
 
     def get_description(self):
-        description = self.description or self.video.get_description()
-        return re.sub('\s+', ' ', description).strip()
+        return self.description
 
     def get_thumbnail(self):
         thumbnail = self.highest_resolution_thumbnail.get('url', '')

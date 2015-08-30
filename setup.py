@@ -25,7 +25,8 @@ readme = open('README.rst').read()
 setup(
     name='djangocms-youtube',
     version=version,
-    description="""YouTube embed plugin for your django-cms powered site with options for custom video thumbnails, analytics, SEO and more.""",
+    description="""YouTube embed plugin for your django-cms powered site with options
+    for custom video thumbnails, analytics, SEO and more.""",
     long_description=readme,
     author='Mishbah Razzaque',
     author_email='mishbahx@gmail.com',

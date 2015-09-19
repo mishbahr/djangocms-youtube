@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from cms.models import Title
-from cms.models.fields import PlaceholderField
 from django.contrib.sites.models import Site
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import Q
 from django.utils import translation
+
+from cms.models import Title
+from cms.models.fields import PlaceholderField
 
 from .models import Youtube
 

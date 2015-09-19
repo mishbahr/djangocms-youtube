@@ -164,11 +164,58 @@ Make sure you have installed the Google Analytics tracking scripts.
 See https://developers.google.com/analytics/devguides/collection/analyticsjs/
 
 
+Video Sitemap
+=============
 
-Todo
-----
+Generate a sitemap for your YouTube videos.
 
-* Video Sitemap (work in progress).
+.. image:: http://mishbahr.github.io/assets/djangocms-youtube/thumbnail/djangocms-youtube-005.png
+  :target: http://mishbahr.github.io/assets/djangocms-youtube/djangocms-youtube-005.png
+  :width: 768px
+  :align: center
+
+**Video Sitemap Configuration**
+
+Import ``CMSVideoSitemap`` from ``djangocms_youtube.video_sitemap`` to the top of your main ``urls.py``
+
+.. code-block::
+
+    from djangocms_youtube.video_sitemap import CMSVideoSitemap
+
+Add ``djangocms_youtube.views.video_sitemap`` view to your urlpatterns.
+
+.. code-block::
+
+    video_sitemaps = {
+        'cmspages': CMSVideoSitemap,
+    }
+
+    urlpatterns = patterns(
+        '',
+        url(r'^videos/sitemap\.xml$', 'djangocms_youtube.views.video_sitemap', {'sitemaps': video_sitemaps })
+    )
+
+**Placeholders outside the CMS Pages**
+
+A simple example for ``aldryn-newsblog``
+
+.. code-block::
+
+    ​from djangocms_youtube.video_sitemap import VideoSitemap
+    from aldryn_newsblog.models import Article
+
+    ​
+    class NewsblogVideoSitemap(VideoSitemap):
+        model = Article
+    ​
+        def get_queryset(self):
+            queryset = super(NewsblogVideoSitemap, self).get_queryset()
+            language = self.get_language()
+            queryset = queryset.translated(language)
+            return queryset.published()
+    ​
+        def location(self, item):
+            return item.get_absolute_url(self.get_language())
 
 
 You may also like...

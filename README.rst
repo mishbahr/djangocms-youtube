@@ -186,13 +186,16 @@ Add ``djangocms_youtube.views.video_sitemap`` view to your urlpatterns.
 
 .. code-block::
 
+    from djangocms_youtube.views import video_sitemap
+
     video_sitemaps = {
         'cmspages': CMSVideoSitemap,
     }
 
     urlpatterns = patterns(
         '',
-        url(r'^videos/sitemap\.xml$', 'djangocms_youtube.views.video_sitemap', {'sitemaps': video_sitemaps })
+        url(r'^videos/sitemap\.xml$', video_sitemap, {'sitemaps': video_sitemaps},
+            name='djangocms_youtube.views.video_sitemap'),
     )
 
 **Placeholders outside the CMS Pages**

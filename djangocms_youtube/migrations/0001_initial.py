@@ -13,8 +13,8 @@ from djangocms_youtube.conf import settings
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('filer', '__latest__'),
-        ('cms', '__latest__'),
+        ('filer', '0006_auto_20160623_1627'),
+        ('cms', '0014_auto_20160404_1908'),
     ]
 
     operations = [

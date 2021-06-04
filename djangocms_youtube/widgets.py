@@ -10,7 +10,7 @@ from .models import Youtube
 class YoutubeVideoURLWidget(forms.TextInput):
     model = Youtube
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if attrs is None:
             attrs = {}
 

@@ -5,8 +5,7 @@ import logging
 
 from django.contrib.sites.models import Site
 from django.db import models
-from django.utils import six
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible, iteritems as six_iteritems
 from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
@@ -78,7 +77,7 @@ class Youtube(CMSPlugin):
 
     def _generate_thumbnails(self):
         _thumbnails = {}
-        for name, opts in six.iteritems(settings.DJANGOCMS_YOUTUBE_THUMBNAIL_SIZES):
+        for name, opts in six_iteritems(settings.DJANGOCMS_YOUTUBE_THUMBNAIL_SIZES):
             try:
                 thumb_opts = {
                     'size': (int(opts['width']), int(opts['height'])),
@@ -135,7 +134,7 @@ class Youtube(CMSPlugin):
 class Video(object):
 
     def __init__(self, *args, **kwargs):
-        for key, value in six.iteritems(kwargs):
+        for key, value in six_iteritems(kwargs):
             setattr(self, key, value)
 
     def get_id(self):

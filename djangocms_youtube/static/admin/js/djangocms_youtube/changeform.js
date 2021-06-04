@@ -1,5 +1,5 @@
-(function($) {
-    $(function() {
+window.addEventListener("load", function() {
+    (function($) {
 
         var heightInput = $('input[name="height"]');
         var widthInput = $('input[name="width"]');
@@ -65,5 +65,5 @@
             }
         })
 
-    });
-})(django.jQuery);
+    })(django.jQuery);
+});
